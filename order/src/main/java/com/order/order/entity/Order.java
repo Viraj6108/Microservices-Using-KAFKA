@@ -19,7 +19,7 @@ public class Order {
     private Integer quantity;
     private double price;
     public  enum STATUS{
-        CONFIRMED, PENDING
+        CONFIRMED, PENDING,CANCELLED
     }
     @Enumerated(EnumType.STRING)
     private STATUS status;
@@ -74,7 +74,7 @@ public class Order {
     public void setAddress(String address) {
         this.address = address;
     }
-    public STATUS getStatus(STATUS status)
+    public STATUS getStatus()
     {
         return status;
     }

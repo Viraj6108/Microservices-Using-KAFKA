@@ -7,5 +7,6 @@ public interface OrderService {
     public Order placeOrder(Order order) throws OrderException;
     public Order getOrder(int orderId) throws OrderException;
     public String paymentEvent(String paymentJson)throws OrderException;
+    public Order cancelOrder (int order) throws OrderException;
 
 }

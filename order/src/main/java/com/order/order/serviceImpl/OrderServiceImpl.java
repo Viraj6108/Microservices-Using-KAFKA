@@ -59,4 +59,19 @@ public class OrderServiceImpl implements OrderService {
         kafkaTemplate.send("order-confirmed",orderConfirmedJson);
         return "Order placed successful";
     }
+
+    @Override
+    public Order cancelOrder(int orderId) throws OrderException {
+        Order order1 = orderRepository.findById(orderId).get();
+        if(order1.getStatus().equals(Order.STATUS.CONFIRMED))
+        {
+            order1.setStatus(Order.STATUS.CANCELLED);
+            orderRepository.save(order1);
+            String orderJson = gson.toJson(order1);
+            kafkaTemplate.send("order-cancel",orderJson);
+            return order1;
+        }
+        throw new OrderException("Order is not CONFIRMED ");
+
+    }
 }

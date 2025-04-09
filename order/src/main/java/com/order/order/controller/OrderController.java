@@ -6,10 +6,7 @@ import com.order.order.entity.Order;
 import com.order.order.exception.OrderException;
 import com.order.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/order")
@@ -27,5 +24,12 @@ public class OrderController {
 
 
         return order1;
+    }
+
+    //Cancellation of order
+    @PostMapping("/cancel")
+    public Order cancelOrder(@RequestParam ("orderId") int orderId)throws OrderException
+    {
+        return orderService.cancelOrder(orderId);
     }
 }

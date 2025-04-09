@@ -17,4 +17,10 @@ public class kafka {
     public NewTopic orderConfirmed(){
         return TopicBuilder.name("order-confirmed").build();
     }
+
+    @Bean
+    public NewTopic cancelOrder()
+    {
+        return TopicBuilder.name("order-cancel").build();
+    }
 }
