@@ -71,7 +71,7 @@ public class OrderServiceImpl implements OrderService {
             kafkaTemplate.send("order-cancel",orderJson);
             return order1;
         }
-        throw new OrderException("Order is not CONFIRMED ");
+        throw new OrderException("Order is CANCELLED");
 
     }
 }
