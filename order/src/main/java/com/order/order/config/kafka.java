@@ -1,6 +1,7 @@
 package com.order.order.config;
 
 import org.apache.kafka.clients.admin.NewTopic;
+import org.apache.kafka.common.internals.Topic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
@@ -23,4 +24,13 @@ public class kafka {
     {
         return TopicBuilder.name("order-cancel").build();
     }
+
+    @Bean
+    public NewTopic delivered(){return TopicBuilder.name("order-delivered").build();}
+
+    @Bean
+    public NewTopic paymentDetails(){return TopicBuilder.name("payment-detail").build();}
+
+    @Bean
+    public NewTopic shipmentDetails(){return TopicBuilder.name("shipment-detail").build();}
 }
